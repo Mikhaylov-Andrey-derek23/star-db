@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import './App.scss';
 
 
 export default class App extends Component {
@@ -6,7 +7,7 @@ export default class App extends Component {
     render() {
 
         return (
-            <div></div>
+            <div className="text-center">Test!</div>
         )
     }
 };

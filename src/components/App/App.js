@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-// import './App.scss';
+import Header from '../Header/';
+import RandomPlanet from '../RandomPlanet/';
+import ItemsList from '../items-list';
+import PersonDetalis from '../PersonDetails/';
+import PlanetDetails from '../PlanetDetails/';
+import './App.scss';
 
 
 export default class App extends Component {
@@ -7,7 +12,16 @@ export default class App extends Component {
     render() {
 
         return (
-            <div className="text-center">Test!</div>
+
+            <div className="wrapper">
+                <Header />
+                <RandomPlanet />
+                <div className="row">
+                    <ItemsList />
+                    {/* <PersonDetalis/> */}
+                    <PlanetDetails/>
+                </div>
+            </div>
         )
     }
 };

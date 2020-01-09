@@ -35,7 +35,7 @@ then(
 
 swapi.getPerson('4').then(body=>console.log(`personal- ${body.name}`)).catch(err => { console.log(`Could not fetch ${err}`) });
 
-swapi.getPlanet('4').then(body=>console.log(`planet - ${body.name}`)).catch(err => { console.log(`Could not fetch ${err}`) });
+swapi.getPlanet('4').then(body=>console.log(body)).catch(err => { console.log(`Could not fetch ${err}`) });
 
 swapi.getStarship('12').then(body=>console.log(`starship - ${body.name}`)).catch(err => { console.log(`Could not fetch ${err}`) });
 

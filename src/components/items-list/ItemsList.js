@@ -4,18 +4,13 @@ import './ItemsList.scss';
 export default class ItemsList extends Component {
 
     render() {
+        //console.log(this.props.listPeople)
         return (
             <div className="col-md-6">
                 <ul className="item-list list-group">
-                    <li className="list-group-item">
-                        Luke Skywalker
-                    </li>
-                    <li className="list-group-item">
-                        Darth Vader
-                    </li>
-                    <li className="list-group-item">
-                        R2-D2
-                    </li>
+                    {this.props.listPeople.map(e => 
+                        <li className="list-group-item" key={e.id}  onClick={() => this.props.onClikItemsPeople(e.id)}>{e.name}</li>
+                    )}
                 </ul>
             </div>
         )

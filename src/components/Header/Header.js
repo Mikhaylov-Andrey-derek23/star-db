@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import './Header.scss';
 
 export default class Header extends Component {
 
     render() {
 
         return (
-            <nav className="navbar navbar-expand-lg  navbar-dark bg-dark align-items-baseline">
+            <nav className="navbar navbar-expand-lg  navbar-dark bg-dark align-items-baseline ">
                 <a className="navbar-brand" href="#"> Star DB</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

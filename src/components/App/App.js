@@ -17,13 +17,10 @@ export default class App extends Component {
         super(props);
         this.state = {
             title: "Title",
-            randomPlanet: null,
-            person : null,   
-            loading : true,
             error : false, 
             loadingListPeaople : true,
-            loadingPerson : true,
-            listPeople : null
+            listPeople : null,
+            selectPerson : 1
 
             
             
@@ -38,42 +35,7 @@ export default class App extends Component {
             error: true
         }) 
     }
-    updatePlanet = () => {
-        const id = Math.floor(Math.random() * 17) + 3;
-        this.swapi.getPlanet(id)
-            .then(body => {
-                //console.log(body);
-                this.setState({
-                    randomPlanet: body,
-                    loading : false
-                })
-            })
-            .catch(err => { 
-                console.log(`Could not fetch! ${err}`);
-                this.setState({
-                    loading : false,
-                    randomPlanet: false
-                }) 
-            });
-    }
-
-    getPersonal = (id) =>{
-        this.swapi.getPerson(id)
-            .then(body => {
-                this.setState({
-                    person: body,
-                    loadingPerson : false
-                })
-            })
-            .catch(err => { 
-                console.log(`Could not fetch! ${err}`);
-                this.setState({
-                    loadingPerson : false,
-                    person: false
-                }) 
-             });
-    }
-
+    
     getStarship(){
         const id = 12
         this.swapi.getStarship(id)
@@ -111,23 +73,25 @@ export default class App extends Component {
     }
     
     onClikItemsPeople(key){
-        this.getPersonal(key);
+        this.setState({
+            selectPerson : key
+        })
     }
     
 
     swapi = new SwapiServis();
 
     componentDidMount(){
-        this.updatePlanet();
-        this.interval = setInterval(this.updatePlanet, 5000);
+        //this.updatePlanet();
+        //this.interval = setInterval(this.updatePlanet, 5000);
         this.getAllpeople(1);
-        this.getPersonal(1);
+        //this.getPersonal(1);
         // this.getStarship();
     }
 
     componentWillUnmount()
     {
-        clearInterval(this.interval);
+        //clearInterval(this.interval);
     }
 
     render() {
@@ -135,9 +99,7 @@ export default class App extends Component {
             <div className="wrapper">
                 <Header />
                 <div className="w-100">
-                    {this.state.randomPlanet ? <RandomPlanet randomPlanet={this.state.randomPlanet} /> : ''}
-                    {this.state.loading ? <Loading/> : ''}
-                    {this.state.randomPlanet == false ? <ErrorMessage/> : ''}
+                    <RandomPlanet/>
                 </div>
                 
                 <div className="row">
@@ -145,9 +107,8 @@ export default class App extends Component {
                     {this.state.loadingListPeople ? <Loading/> : ''}
                     {this.state.listPeople == false ? <ErrorMessage/> : ''}
                     
-                    {this.state.person ? <PersonDetalis  person = {this.state.person}/> : ''}
-                    {this.state.loadingPerson ? <Loading/> : ''}
-                    {this.state.person == false ? <ErrorMessage/> : ''}
+                    <PersonDetalis  selectPerson={this.state.selectPerson}/> 
+                    
 
 
                     

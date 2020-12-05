@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import './ItemDetalis.scss';
 import Loading from '../Loading/';
 import SwapiServis from '../../service/';
+
+const Record = ({item, field, label }) => {
+    return (
+        <ul className="list-group-item"> 
+            <span className="term">{label}</span>
+            <span>{field}</span>
+        </ul>
+    )
+}
+
+
 export default class ItemDetalis extends Component {
 
     state = {
@@ -70,20 +81,17 @@ export default class ItemDetalis extends Component {
                     <div className="card-body">
                         <h4>{this.state.item.name}</h4>
                         <ul className="list-group list-group-flush">
-                            <li className="list-group-item">
-                                <span className="term">Gender</span>
-                                <span>{this.state.item.gender}</span>
-                            </li>
-                            <li className="list-group-item">
-                                <span className="term">Birth Year</span>
-                                <span>{this.state.item.birth_year}</span>
-                            </li>
-                            <li className="list-group-item">
-                                <span className="term">Eye Color</span>
-                                <span>{this.state.item.eye_color}</span>
-                            </li>
+                            {
+                                this.props.fields.map(e  => 
+                                    <li className="list-group-item">
+                                        <span className="term">{e.label}</span>
+                                        <span>{this.state.item[e.field]}</span>
+                                    </li>
+                                ) 
+                            }
                         </ul>
                     </div>
+                   
                 </div>
             )
         }

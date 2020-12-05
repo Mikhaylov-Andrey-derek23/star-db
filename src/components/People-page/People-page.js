@@ -48,7 +48,16 @@ export default class People_page extends Component{
                         selectItem={this.state.selectPerson}
                         dataFunction = {getPerson}
                         imgType = {"characters"}
-                        />
+                        fields = {
+                            [
+                                {field : "gender", label : "Gender"},
+                                {field : "birth_year", label : "Birth Year"},
+                                {field : "eye_color", label : "Eye Color"}
+                            ]
+                        }
+                        >
+                            <p></p>
+                        </ItemDetalis>
                     </ErrorBoundry>
                 }
                 />

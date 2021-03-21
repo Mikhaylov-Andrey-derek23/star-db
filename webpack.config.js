@@ -25,8 +25,7 @@ module.exports = (env = {}) => {
 
         if (isProd){
             plugins.push(new MiniCssExtractPlugin({
-                filename: "main-[hash:8].css",
-                
+                filename: "main-[hash:8].css"
             }))
         }
         return plugins

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/';
-import 'jquery';
-import 'popper.js';
+// import 'jquery';
+// import 'popper.js';
 import './style/bootstrap.min.css';
 // import SwapiServis from './Service';
 
